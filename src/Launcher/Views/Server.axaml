@@ -7,7 +7,7 @@
              xmlns:vm="using:Launcher.ViewModels"
 
              mc:Ignorable="d"
-             d:DesignWidth="800"
+             d:DesignWidth="400"
              d:DesignHeight="400"
 
              x:DataType="vm:Server"
@@ -19,68 +19,50 @@
 
   <Grid RowDefinitions="40,40,*" ColumnDefinitions="*,40" Margin="10">
 
-    <!-- Title / Status Icon -->
-    <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10">
-      <TextBlock FontWeight="Bold" FontSize="25" Text="{Binding Info.Name}" />
-      <Ellipse Width="10" Height="10" Fill="{Binding ServerStatusFill}" Stroke="#000000" StrokeThickness="1" />
+    <!-- Title -->
+    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+      <TextBlock FontWeight="Medium" FontSize="16" Text="{Binding Info.Name}" />
     </StackPanel>
 
     <!-- Server Status -->
-    <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+    <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
       <StackPanel Spacing="10" Orientation="Horizontal">
-        <Button Command="{Binding RefreshServerStatusCommand}">
-          <Path Width="12" Height="12" Classes.rotating="{Binding IsRefreshing}" Data="{StaticResource Icons.Loading}" ToolTip.Tip="Refresh" Stretch="Fill" />
+        <Button Background="#3c4c74" Opacity="0.4" Command="{Binding RefreshServerStatusCommand}">
+          <Path Width="12" Height="12" Opacity="40" Classes.rotating="{Binding IsRefreshing}" Data="{StaticResource Icons.Loading}" ToolTip.Tip="Refresh" Stretch="Fill" />
         </Button>
         <StackPanel Orientation="Horizontal">
           <TextBlock Text="{StaticResource Text.ServerStatus}" />
-          <TextBlock Text="{Binding Status}" />
+          <TextBlock Text="{Binding Status}" FontWeight="SemiBold" Foreground="{Binding ServerStatusFill}" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" IsVisible="{Binding IsOnline}">
           <TextBlock Text="{StaticResource Text.OnlinePlayers}" />
-          <TextBlock Text="{Binding OnlinePlayers}" />
+          <TextBlock Text="{Binding OnlinePlayers}" FontWeight="SemiBold"/>
         </StackPanel>
       </StackPanel>
     </StackPanel>
 
     <!-- Server Description -->
     <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
-      <Border Padding="10" CornerRadius="3" Background="{StaticResource Color.Popup}"  IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+      <Border Padding="10" CornerRadius="8" Margin="0,40,0,0" Background="{StaticResource Color.Popup}" Opacity="0.1" IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
         <ScrollViewer MaxHeight="180">
-          <md:MarkdownScrollViewer Markdown="{Binding Info.Description}" />
+          <md:MarkdownScrollViewer Markdown="{Binding Info.Description}" Opacity="100"/>
         </ScrollViewer>
       </Border>
     </StackPanel>
 
     <!-- Server Play/Update Status -->
-    <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" Spacing="10" VerticalAlignment="Bottom" HorizontalAlignment="Left">
-      <Button Classes="waiting" Width="100" Height="60" Command="{Binding PlayCommand}" HorizontalContentAlignment="Center" IsEnabled="{Binding Process, Converter={x:Static ObjectConverters.IsNull}}">
-        <TextBlock Text="{StaticResource Text.Play}" FontWeight="Medium" FontSize="30" />
-        <Button.Styles>
-          <Style Selector="Button[IsEnabled=True]">
-            <Style.Animations>
-              <Animation Duration="0:0:2" IterationCount="Infinite">
-                <KeyFrame Cue="0%">
-                  <Setter Property="Opacity" Value="0.6"/>
-                </KeyFrame>
-                <KeyFrame Cue="50%">
-                  <Setter Property="Opacity" Value="1.0"/>
-                </KeyFrame>
-                <KeyFrame Cue="100%">
-                  <Setter Property="Opacity" Value="0.6"/>
-                </KeyFrame>
-              </Animation>
-            </Style.Animations>
-          </Style>
-        </Button.Styles>
+    <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+      <Button Classes="waiting" Background="#3c4c74" Margin="1" Opacity="0.4" Width="80" Height="30" Command="{Binding PlayCommand}" IsEnabled="{Binding Process, Converter={x:Static ObjectConverters.IsNull}}">
+        <TextBlock Text="{StaticResource Text.Connect}" Opacity="40" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="12" />
       </Button>
-
-      <TextBlock Text="{Binding StatusMessage}" />
     </StackPanel>
 
     <!-- Icons -->
-    <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Classes="flat" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenFolder}">
+    <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Classes="flat transparent" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenClientFolder}">
       <Path Width="16" Height="16" Data="{StaticResource Icons.Folder}" Stretch="Fill" />
     </Button>
+
+	<TextBlock Text="{Binding StatusMessage}" FontWeight="DemiBold" Grid.Row="4" Grid.ColumnSpan="2" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>
 
   </Grid>
 

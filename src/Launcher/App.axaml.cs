@@ -1,19 +1,16 @@
+using System;
 using System.Threading.Tasks;
-
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.Controls.ApplicationLifetimes;
-
-using NLog;
-
-using Velopack;
-using Velopack.Sources;
-
-using NuGet.Versioning;
-
+using Avalonia.Markup.Xaml;
+using IWshRuntimeLibrary;
 using Launcher.Models;
 using Launcher.ViewModels;
+using NLog;
+using NuGet.Versioning;
+using Velopack;
+using Velopack.Sources;
 
 namespace Launcher;
 
@@ -54,14 +51,10 @@ public partial class App : Application
 
         var settings = Settings.Instance;
 
-        var splash = new Views.Splash();
-
-        applicationLifetime.MainWindow = splash;
-
 #if RELEASE
         if (_updateManager.IsInstalled)
         {
-            splash.ViewModel.Message = GetText("Text.Splash.CheckForUpdates");
+            splash.ViewModel.Message = GetText("Text.Main.CheckForUpdates");
 
             var updateInfo = await _updateManager.CheckForUpdatesAsync();
 
@@ -72,7 +65,7 @@ public partial class App : Application
                     splash.ViewModel.Message = GetText("Text.Splash.DownloadProgress", updateInfo.TargetFullRelease.Version, p);
                 });
 
-                splash.ViewModel.Message = GetText("Text.Splash.RestartLauncher");
+                splash.ViewModel.Message = GetText("Text.Main.RestartLauncher");
 
                 await Task.Delay(500);
 
@@ -83,8 +76,6 @@ public partial class App : Application
         }
 #endif
 
-        splash.ViewModel.Message = GetText("Text.Splash.LauncherUpToDate");
-
         await Task.Delay(500);
 
         var main = new Views.Main();
@@ -94,9 +85,28 @@ public partial class App : Application
         applicationLifetime.MainWindow = main;
 
         main.Show();
-        splash.Close();
+
+        CreateDesktopShortcut();
 
         base.OnFrameworkInitializationCompleted();
+
+        main.ViewModel.Message = GetText("Text.Main.LauncherUpToDate");
+    }
+
+    public static void CreateDesktopShortcut()
+    {
+        object shDesktop = (object)"Desktop";
+        WshShell shell = new WshShell();
+
+        string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\OSFR Launcher.lnk";
+        IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
+
+        shortcut.WorkingDirectory = Environment.CurrentDirectory;
+
+        shortcut.TargetPath = Environment.CurrentDirectory + @"\OSFR Launcher.exe";
+        shortcut.IconLocation = Environment.CurrentDirectory + @"\App.ico";
+
+        shortcut.Save();
     }
 
     public static void SetLocale(LocaleType value)

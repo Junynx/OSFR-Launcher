@@ -1,17 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Diagnostics;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.ComponentModel.DataAnnotations;
-
+using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
-
-using Launcher.Models;
 using Launcher.Helpers;
+using Launcher.Models;
 
 namespace Launcher.ViewModels;
 

@@ -20,5 +20,5 @@
   <SolidColorBrush x:Key="Color.FG1">#FFF1F1F1</SolidColorBrush>
   <SolidColorBrush x:Key="Color.FG2">#40F1F1F1</SolidColorBrush>
 
-  <SolidColorBrush x:Key="Color.Accent1">#FF007ACC</SolidColorBrush>
+  <SolidColorBrush x:Key="Color.Accent1">#3c4c74</SolidColorBrush>
 </ResourceDictionary>

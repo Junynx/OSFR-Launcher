@@ -21,6 +21,6 @@
                HorizontalAlignment="Center"
                Text="{DynamicResource Text.Delete_Server}" />
     <TextBlock HorizontalAlignment="Center"
-               Text="{DynamicResource Text.Delete_Server.Confirm}" />
+               Text="{DynamicResource Text.Delete_Server.Confirm}" Margin="8"/>
   </StackPanel>
 </UserControl>
