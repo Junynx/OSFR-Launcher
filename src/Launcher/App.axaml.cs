@@ -86,27 +86,9 @@ public partial class App : Application
 
         main.Show();
 
-        CreateDesktopShortcut();
-
         base.OnFrameworkInitializationCompleted();
 
         main.ViewModel.Message = GetText("Text.Main.LauncherUpToDate");
-    }
-
-    public static void CreateDesktopShortcut()
-    {
-        object shDesktop = (object)"Desktop";
-        WshShell shell = new WshShell();
-
-        string shortcutAddress = (string)shell.SpecialFolders.Item(ref shDesktop) + @"\OSFR Launcher.lnk";
-        IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutAddress);
-
-        shortcut.WorkingDirectory = Environment.CurrentDirectory;
-
-        shortcut.TargetPath = Environment.CurrentDirectory + @"\OSFR Launcher.exe";
-        shortcut.IconLocation = Environment.CurrentDirectory + @"\App.ico";
-
-        shortcut.Save();
     }
 
     public static void SetLocale(LocaleType value)
