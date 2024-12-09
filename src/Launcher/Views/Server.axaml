@@ -20,12 +20,12 @@
   <Grid RowDefinitions="40,40,*" ColumnDefinitions="*,40" Margin="10">
 
     <!-- Title -->
-    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+    <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="20,10,0,0">
       <TextBlock FontWeight="Medium" FontSize="16" Text="{Binding Info.Name}" />
     </StackPanel>
 
     <!-- Server Status -->
-    <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
+    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="20,11,0,0">
       <StackPanel Spacing="10" Orientation="Horizontal">
         <Button Background="#3c4c74" Opacity="0.4" Command="{Binding RefreshServerStatusCommand}">
           <Path Width="12" Height="12" Opacity="40" Classes.rotating="{Binding IsRefreshing}" Data="{StaticResource Icons.Loading}" ToolTip.Tip="Refresh" Stretch="Fill" />
@@ -42,8 +42,8 @@
     </StackPanel>
 
     <!-- Server Description -->
-    <StackPanel Grid.Row="2" Grid.ColumnSpan="2">
-      <Border Padding="10" CornerRadius="8" Margin="0,40,0,0" Background="{StaticResource Color.Popup}" Opacity="0.1" IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+    <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="20,50,0,0">
+      <Border Padding="10" CornerRadius="8" Background="{StaticResource Color.Popup}" Opacity="0.1" IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
         <ScrollViewer MaxHeight="180">
           <md:MarkdownScrollViewer Markdown="{Binding Info.Description}" Opacity="100"/>
         </ScrollViewer>
@@ -62,7 +62,7 @@
       <Path Width="16" Height="16" Data="{StaticResource Icons.Folder}" Stretch="Fill" />
     </Button>
 
-	<TextBlock Text="{Binding StatusMessage}" FontWeight="DemiBold" Grid.Row="4" Grid.ColumnSpan="2" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>
+	<TextBlock Text="{Binding StatusMessage}" FontWeight="Regular" Grid.Row="4" FontSize="12" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,40"/>
 
   </Grid>
 
