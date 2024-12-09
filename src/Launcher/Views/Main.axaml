@@ -19,6 +19,7 @@
         Icon="/App.ico"
         Title="{DynamicResource Text.Title}"
         WindowStartupLocation="CenterScreen"
+		CanResize="False"
 
         Width="700" Height="500"
         MinWidth="700" MinHeight="500">
