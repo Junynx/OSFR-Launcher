@@ -30,8 +30,7 @@
   <x:String x:Key="Text.OpenCurrentDirectory" xml:space="preserve">Open Current Directory</x:String>
   <x:String x:Key="Text.OpenClientFolder" xml:space="preserve">Open Client Folder</x:String>
   
-  <x:String x:Key="Text.Splash.Launcher" xml:space="preserve">OSFR Launcher</x:String>
-  <x:String x:Key="Text.Main.CheckForUpdates" xml:space="preserve">Checking For Updates....</x:String>
+  <x:String x:Key="Text.Main.CheckForUpdates" xml:space="preserve">Checking For Updates...</x:String>
   <x:String x:Key="Text.Main.RestartLauncher" xml:space="preserve">Restarting Launcher...</x:String>
   <x:String x:Key="Text.Main.LauncherUpToDate" xml:space="preserve">Launcher is up-to-date</x:String>
   <x:String x:Key="Text.Main.DownloadProgress" xml:space="preserve">Downloading: {0} ({1}%)</x:String>
