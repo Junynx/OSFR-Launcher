@@ -1,10 +1,8 @@
-using System;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
-using IWshRuntimeLibrary;
 using Launcher.Models;
 using Launcher.ViewModels;
 using NLog;
@@ -51,10 +49,12 @@ public partial class App : Application
 
         var settings = Settings.Instance;
 
+        var main = new Views.Main();
+
 #if RELEASE
         if (_updateManager.IsInstalled)
         {
-            splash.ViewModel.Message = GetText("Text.Main.CheckForUpdates");
+            main.ViewModel.Message = GetText("Text.Main.CheckForUpdates");
 
             var updateInfo = await _updateManager.CheckForUpdatesAsync();
 
@@ -62,10 +62,10 @@ public partial class App : Application
             {
                 await _updateManager.DownloadUpdatesAsync(updateInfo, (p) =>
                 {
-                    splash.ViewModel.Message = GetText("Text.Splash.DownloadProgress", updateInfo.TargetFullRelease.Version, p);
+                    main.ViewModel.Message = GetText("Text.Splash.DownloadProgress", updateInfo.TargetFullRelease.Version, p);
                 });
 
-                splash.ViewModel.Message = GetText("Text.Main.RestartLauncher");
+                main.ViewModel.Message = GetText("Text.Main.RestartLauncher");
 
                 await Task.Delay(500);
 
@@ -77,8 +77,6 @@ public partial class App : Application
 #endif
 
         await Task.Delay(500);
-
-        var main = new Views.Main();
 
         _main = main.ViewModel;
 
