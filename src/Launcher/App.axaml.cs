@@ -54,6 +54,8 @@ public partial class App : Application
 #if RELEASE
         if (_updateManager.IsInstalled)
         {
+            await Task.Delay(500);
+
             main.ViewModel.Message = GetText("Text.Main.CheckForUpdates");
 
             var updateInfo = await _updateManager.CheckForUpdatesAsync();

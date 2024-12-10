@@ -16,7 +16,7 @@
 
   <x:String x:Key="Text.Connect" xml:space="preserve">Connect</x:String>
 
-  <x:String x:Key="Text.Running" xml:space="preserve">Running. Please wait ...</x:String>
+  <x:String x:Key="Text.Running" xml:space="preserve">Running. Please wait...</x:String>
 
   <x:String x:Key="Text.Servers" xml:space="preserve">Server List</x:String>
 

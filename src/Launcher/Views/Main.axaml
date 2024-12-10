@@ -35,23 +35,23 @@
   <Grid RowDefinitions="*" ColumnDefinitions="200,*">
 
     <!-- Left - Server List -->
-    <DockPanel LastChildFill="True" Background="{StaticResource Color.Popup}" Opacity="0.1">
+    <DockPanel LastChildFill="True" Background="{StaticResource Color.Server}" Opacity="0.1">
       <TextBlock DockPanel.Dock="Top" Opacity="100" HorizontalAlignment="Center" FontWeight="DemiBold" FontSize="13" Margin="18" Text="{DynamicResource Text.Servers}" />
       <StackPanel Margin="10" HorizontalAlignment="Center" Orientation="Horizontal" DockPanel.Dock="Bottom" Spacing="1">
         
-		<Button Classes="flat transparent" Opacity="100" Command="{Binding ShowSettingsCommand}" ToolTip.Tip="{DynamicResource Text.Settings}">
+		<Button Classes="transparent" Opacity="100" Command="{Binding ShowSettingsCommand}" ToolTip.Tip="{DynamicResource Text.Settings}">
           <Path Width="16" Height="16" Data="{StaticResource Icons.Settings}" Stretch="Fill" />
         </Button>
 
-        <Button Classes="flat transparent" Opacity="100" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenCurrentDirectory}">
+        <Button Classes="transparent" Opacity="100" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenCurrentDirectory}">
           <Path Width="16" Height="16" Data="{StaticResource Icons.Folder}" Stretch="Fill" />
         </Button>
 
-        <Button Classes="flat transparent" Opacity="100" Command="{Binding AddServerCommand}" ToolTip.Tip="{DynamicResource Text.Add_Server}">
+        <Button Classes="transparent" Opacity="100" Command="{Binding AddServerCommand}" ToolTip.Tip="{DynamicResource Text.Add_Server}">
           <Path Width="16" Height="16" Data="{StaticResource Icons.Add}" Stretch="Fill" />
         </Button>
 
-        <Button Classes="flat transparent" Opacity="100" Command="{Binding DeleteServerCommand}" ToolTip.Tip="{DynamicResource Text.Delete_Server}" IsVisible="{Binding ActiveServer, Converter={x:Static ObjectConverters.IsNotNull}}">
+        <Button Classes="transparent" Opacity="100" Command="{Binding DeleteServerCommand}" ToolTip.Tip="{DynamicResource Text.Delete_Server}" IsVisible="{Binding ActiveServer, Converter={x:Static ObjectConverters.IsNotNull}}">
           <Path Width="16" Height="16" Data="{StaticResource Icons.Delete}" Stretch="Fill" />
         </Button>
       </StackPanel>
@@ -78,91 +78,90 @@
   </DockPanel>
 
     <!-- Right - Active Server -->  
-    <Button MinWidth="42" Classes="flat transparent" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,36,30" VerticalAlignment="Bottom" MinHeight="42" MaxWidth="42" Command="{Binding OpenDiscordUrl}" MaxHeight="42" Padding="5" Background="Transparent" CornerRadius="15" ToolTip.Tip="{DynamicResource Text.Main.Discord}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}">
+    <Button MinWidth="42" Classes="transparent" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Margin="0,0,36,30" VerticalAlignment="Bottom" MinHeight="42" MaxWidth="42" Command="{Binding OpenDiscordUrl}" MaxHeight="42" Padding="5" Background="Transparent" CornerRadius="15" ToolTip.Tip="{DynamicResource Text.Main.Discord}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}">
 	<Image Source="/Assets/discord.ico"/>
 	</Button>
-	<Button MinWidth="42" Classes="flat transparent" MinHeight="42" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,-40,30" HorizontalAlignment="Center" Grid.Column="1" MaxWidth="42" Command="{Binding OpenGithubUrl}" MaxHeight="42" Padding="5" Background="Transparent" CornerRadius="15" ToolTip.Tip="{DynamicResource Text.Main.Github}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}">
-	<Image Source="/Assets/github.ico"/>
-	</Button>
-	<Label Grid.Row="0" Grid.Column="1" Margin="0,0,0,15" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="12" FontWeight="DemiBold" Foreground="White" Opacity="0.5" Content="{Binding Message}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
-	<Label Grid.Row="0" Grid.Column="1" Margin="0,100,0,0" FontWeight="DemiBold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5" Foreground="White" Content="{Binding Version, StringFormat='v{0}'}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
-    <Image Source="/Assets/osfrlogo.png" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
-    <v:Server DataContext="{Binding ActiveServer, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNotNull}}" />
+
+	  <Button MinWidth="42" Classes="transparent" MinHeight="42" Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,-40,30" HorizontalAlignment="Center" Grid.Column="1" MaxWidth="42" Command="{Binding OpenGithubUrl}" MaxHeight="42" Padding="5" Background="Transparent" CornerRadius="15" ToolTip.Tip="{DynamicResource Text.Main.Github}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}">
+		  <Image Source="/Assets/github.ico"/>
+	  </Button>	  
+	
+	  <Label Grid.Row="0" Grid.Column="1" Margin="0,0,0,15" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontSize="12" FontWeight="DemiBold" Foreground="White" Opacity="0.5" Content="{Binding Message}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
+	
+	  <Label Grid.Row="0" Grid.Column="1" Margin="0,100,0,0" FontWeight="DemiBold" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5" Foreground="White" Content="{Binding Version, StringFormat='v{0}'}" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
+   
+	  <Image Source="/Assets/osfrlogo.png" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNull}}"/>
+  
+	  <v:Server DataContext="{Binding ActiveServer, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" IsVisible="{Binding $parent[Window].((vm:Main)DataContext).ActiveServer, Converter={x:Static ObjectConverters.IsNotNull}}" />
 
     <!-- Popups -->
     <Grid Grid.Row="0" Grid.ColumnSpan="2" IsVisible="{Binding Popup, Converter={x:Static ObjectConverters.IsNotNull}}">
-      <Border Background="{StaticResource Color.Popup}" Opacity="0.4" PointerPressed="OnPopupCancelByClickMask"/>
+    <Border Background="{StaticResource Color.Window}" Opacity="0.5" PointerPressed="OnPopupCancelByClickMask"/>
 
       <Grid Width="500" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <ContentControl Content="{Binding Popup}" ClipToBounds="False">
+        <ContentControl Content="{Binding Popup}" Opacity="0.9" ClipToBounds="False">
 
           <ContentControl.DataTemplates>
             <DataTemplate DataType="vm:Popup">
-              <Border Margin="8,0,8,8"
-                      Background="{StaticResource Color.Popup}"
-                      BorderBrush="{StaticResource Color.Border0}">
-                <Border.CornerRadius>
-                  <OnPlatform Default="0,0,4,4" Linux="0"/>
-                </Border.CornerRadius>
+				<Border Margin="8,0,8,8"
+						Background="{StaticResource Color.Popup}">
+					<Border.CornerRadius>
+						<OnPlatform Default="5,5,5,5" Linux="0"/>
+					</Border.CornerRadius>
 
-                <Border.BorderThickness>
-                  <OnPlatform Default="0" Linux="1,0,1,1"/>
-                </Border.BorderThickness>
+					<StackPanel Margin="8" Orientation="Vertical">
 
-                <Border.Effect>
-                  <OnPlatform>
-                    <On Options="Windows, macOS">
-                      <DropShadowEffect BlurRadius="8" OffsetX="0" OffsetY="0" Color="Black" Opacity=".5"/>
-                    </On>
-                  </OnPlatform>
-                </Border.Effect>
+						<!-- Popup Widget -->
+						<ContentPresenter Margin="0,8"
+										  Content="{Binding View}"
+										  IsHitTestVisible="{Binding InProgress, Converter={x:Static BoolConverters.Not}}"/>
 
-                <StackPanel Margin="8" Orientation="Vertical">
-					
-                  <!-- Popup Widget -->
-                  <ContentPresenter Margin="0,8"
-                                    Content="{Binding View}"
-                                    IsHitTestVisible="{Binding InProgress, Converter={x:Static BoolConverters.Not}}"/>
+						<!-- Options -->
+						<StackPanel Orientation="Horizontal"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center"
+									IsVisible="{Binding InProgress, Converter={x:Static BoolConverters.Not}}">
+							
+							<Button Classes="flat primary"
+									Content="{DynamicResource Text.Ok}"
+									Click="OnPopupSure"
+									CornerRadius="5"
+									Opacity="0.8"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									HotKey="Enter"/>
+							
+							<Button Classes="flat primary"
+									Margin="10,0,0,0"
+									CornerRadius="5"
+									VerticalAlignment="Center"
+									HorizontalAlignment="Center"
+									Opacity="0.8"
+									Content="{DynamicResource Text.Cancel}"
+									Click="OnPopupCancel" />
+						</StackPanel>
 
-                  <!-- Options -->
-                  <StackPanel Margin="0,8,0,0"
-                              Height="32"
-                              Orientation="Horizontal"
-                              HorizontalAlignment="Center"
-                              IsVisible="{Binding InProgress, Converter={x:Static BoolConverters.Not}}">
-                    <Button Classes="flat primary"
-                            Width="80"
-                            Content="{DynamicResource Text.Ok}"
-                            Click="OnPopupSure"
-                            HotKey="Enter"/>
-                    <Button Classes="flat primary"
-                            Width="80"
-                            Margin="8,0,0,0"
-                            Content="{DynamicResource Text.Cancel}"
-                            Click="OnPopupCancel" />
-                  </StackPanel>
+						<!-- Running -->
+						<StackPanel Orientation="Vertical" Margin="8" IsVisible="{Binding InProgress}">
+							<Rectangle Height="1" Margin="-8,0" HorizontalAlignment="Stretch" Fill="{StaticResource Color.Border1}" />
+							<StackPanel Orientation="Horizontal" Margin="0,8">
 
-                  <!-- Running -->
-                  <StackPanel Orientation="Vertical" Margin="8" IsVisible="{Binding InProgress}">
-                    <Rectangle Height="1" Margin="-8,0" HorizontalAlignment="Stretch" Fill="{StaticResource Color.Border1}" />
-                    <StackPanel Orientation="Horizontal" Margin="0,8">
+								<Path Width="12" Height="12" Classes="rotating" Data="{StaticResource Icons.Loading}" IsVisible="{Binding InProgress}" Stretch="Fill" />
+								<TextBlock Margin="6,0,0,0" FontSize="14" FontWeight="Bold" Text="{DynamicResource Text.Running}"/>
+							</StackPanel>
 
-                      <Path Width="12" Height="12" Classes="rotating" Data="{StaticResource Icons.Loading}" IsVisible="{Binding InProgress}" Stretch="Fill" />
-                      <TextBlock Margin="6,0,0,0" FontSize="14" FontWeight="Bold" Text="{DynamicResource Text.Running}"/>
-                    </StackPanel>
-
-                    <TextBlock HorizontalAlignment="Stretch"
-                               TextWrapping="Wrap"
-                               FontStyle="Italic"
-                               Text="{Binding ProgressDescription}"/>
-                    <ProgressBar Margin="0,8,0,0"
-                                 HorizontalAlignment="Stretch"
-                                 IsIndeterminate="True"
-                                 Background="{StaticResource Color.FG2}" Foreground="{StaticResource Color.Accent1}"
-                                 Minimum="0" Maximum="100"/>
-                  </StackPanel>
-                </StackPanel>
-              </Border>
+							<TextBlock HorizontalAlignment="Stretch"
+									   TextWrapping="Wrap"
+									   FontStyle="Italic"
+									   Text="{Binding ProgressDescription}"/>
+							<ProgressBar Margin="0,8,0,0"
+										 HorizontalAlignment="Stretch"
+										 IsIndeterminate="True"
+										 Background="{StaticResource Color.FG2}" Foreground="{StaticResource Color.Accent1}"
+										 Minimum="0" Maximum="100"/>
+						</StackPanel>
+					</StackPanel>
+				</Border>
             </DataTemplate>
           </ContentControl.DataTemplates>
         </ContentControl>

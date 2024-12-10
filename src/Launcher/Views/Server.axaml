@@ -43,7 +43,7 @@
 
     <!-- Server Description -->
     <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Margin="20,50,0,0">
-      <Border Padding="10" CornerRadius="8" Background="{StaticResource Color.Popup}" Opacity="0.1" IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
+      <Border Padding="10" CornerRadius="8" Background="{StaticResource Color.Description}" Opacity="0.1" IsVisible="{Binding Info.Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}">
         <ScrollViewer MaxHeight="180">
           <md:MarkdownScrollViewer Markdown="{Binding Info.Description}" Opacity="100"/>
         </ScrollViewer>
@@ -58,7 +58,7 @@
     </StackPanel>
 
     <!-- Icons -->
-    <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Classes="flat transparent" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenClientFolder}">
+    <Button Grid.Row="3" Grid.Column="1" VerticalAlignment="Bottom" Classes="transparent" Command="{Binding OpenFolderCommand}" ToolTip.Tip="{DynamicResource Text.OpenClientFolder}">
       <Path Width="16" Height="16" Data="{StaticResource Icons.Folder}" Stretch="Fill" />
     </Button>
 

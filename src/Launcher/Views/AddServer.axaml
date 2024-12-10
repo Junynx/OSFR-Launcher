@@ -21,7 +21,7 @@
                HorizontalAlignment="Center"
                Text="{DynamicResource Text.Add_Server}" />
 
-    <Grid Margin="8,16,0,0"
+    <Grid Margin="8,10,0,0"
           RowDefinitions="32"
           ColumnDefinitions="120,*">
 

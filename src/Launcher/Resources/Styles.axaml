@@ -127,43 +127,6 @@
     <Setter Property="Cursor" Value="Hand"/>
   </Style>
 
-  <Style Selector="Button.flat">
-    <Setter Property="FontWeight" Value="Bold"/>
-    <Setter Property="BorderThickness" Value="0"/>
-    <Setter Property="TextBlock.TextAlignment" Value="Center"/>
-    <Setter Property="Foreground" Value="{StaticResource Color.FG1}"/>
-    <Setter Property="Background" Value="{StaticResource Color.FlatButton.Background}"/>
-    <Setter Property="VerticalContentAlignment" Value="Center"/>
-    <Setter Property="Template">
-      <ControlTemplate>
-        <Grid>
-          <Border x:Name="PART_Border"
-                  Margin="2"
-                  Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}"
-                  CornerRadius="{TemplateBinding CornerRadius}"
-                  Effect="drop-shadow(0 0 2 #80000000)"/>
-
-          <ContentPresenter x:Name="PART_ContentPresenter"
-                            Margin="2"
-                            Background="Transparent"
-                            Padding="{TemplateBinding Padding}"
-                            Content="{TemplateBinding Content}"
-                            ContentTemplate="{TemplateBinding ContentTemplate}"
-                            HorizontalContentAlignment="Center"
-                            VerticalContentAlignment="Center"/>
-        </Grid>
-      </ControlTemplate>
-    </Setter>
-  </Style>
-  <Style Selector="Button.flat:pointerover /template/ Border#PART_Border">
-    <Setter Property="Background" Value="#3c4c74"/>
-  </Style>
-  <Style Selector="Button.flat:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent"/>
-  </Style>
-
   <Style Selector="Button.flat.primary">
     <Setter Property="Background" Value="{StaticResource Color.FlatButton.PrimaryBackground}"/>
   </Style>
@@ -174,13 +137,13 @@
     <Setter Property="Background" Value="Transparent"/>
   </Style>
 	
-  <Style Selector="Button.flat.transparent">
+  <Style Selector="Button.transparent">
 	<Setter Property="Background" Value="Transparent"/>
   </Style>
-  <Style Selector="Button.flat.transparent:pointerover /template/ Border#PART_Border">
+  <Style Selector="Button.transparent:pointerover /template/ Border#PART_Border">
     <Setter Property="Background" Value="#3c4c74"/>
    </Style>
-   <Style Selector="Button.flat.transparent:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-    <Setter Property="Background" Value="Transparent"/>
+   <Style Selector="Button.transparent:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="#3c4c74"/>
   </Style>
 </Styles>
